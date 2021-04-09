@@ -1,0 +1,10 @@
+#main-body{
+   background-image: url("../src/assets/imageedit_1_5180800025.png");
+   background-repeat: no-repeat;
+   /* Center and scale the image nicely */
+   background-size: 100%;
+   background-size: cover;
+}
+#root{
+   height: 100vh;
+}
