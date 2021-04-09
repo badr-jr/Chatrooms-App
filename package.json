@@ -18,9 +18,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "parcel public/index.html",
-    "heroku-postbuild": "parcel build public/index.html",
-    "build": "parcel build public/index.html"
+    "start": "parcel dist/index.html",
+    "heroku-postbuild": "parcel build dist/index.html",
+    "build": "parcel build dist/index.html"
   },
   "author": "",
   "license": "ISC"
