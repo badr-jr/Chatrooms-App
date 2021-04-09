@@ -4,5 +4,7 @@
    /* Center and scale the image nicely */
    background-size: 100%;
    background-size: cover;
-
+}
+#root{
+   height: 100vh;
 }
