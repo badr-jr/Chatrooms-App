@@ -10,13 +10,23 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import './styles.css'
 class Chatroom extends React.Component {
+    eng = /^[a-zA-Z0-9]+$/;
+    arab={'ا':'a','ب':'b','ت':'t','ث':'th','ج':'g','ح':'h','خ':'kh','د':'d','ذ':'th','ر':'r','ز':'z','س':'c','ش':'sh','ص':'s','ض':'dd','ع':'ai','غ':'gh','ف':'f','ق':'q','ك':'k','ل':'l','م':'m','ن':'n','ه':'h','و':'w','ي':'yi','ى':'aa'};
+    engToArab = (txt)=>{
+        let result = '';
+        for(var i=0 ;i < txt.length ; i++){
+            result += this.arab[txt[i]];
+        }
+        return result;
+    }
     constructor(props) {
         super(props);
         this.state = {
-            messages: []
+            messages: [],
         }
     }
-    client = new W3CWebSocket('ws://chatting-rooms-app.herokuapp.com/ws/chat/' + this.props.roomName + '/');
+    room= this.eng.test(this.props.roomName) == false ? this.room=this.engToArab(this.props.roomName) : this.room = this.props.roomName;
+    client = new W3CWebSocket('ws://chatting-rooms-app.herokuapp.com/ws/chat/' + this.room+ '/');
     componentDidMount() {
         const objDiv = document.getElementById("chat-box");
         this.client.onopen = () => {
