@@ -37,12 +37,15 @@ class Chatroom extends React.Component {
         }
     }
     sendMessage = (e) => {
+        console.log(this.client.readyState);
+        if(this.client.readyState){
         this.client.send(JSON.stringify({
             type: "send_group_message",
             message: document.getElementById('message').value,
             username: this.props.user
         }));
-        document.getElementById('message').value = '';
+    }
+        document.getElementById('message').value = ''; 
         e.preventDefault();
     };
     render() {
@@ -64,7 +67,7 @@ class Chatroom extends React.Component {
                 <form onSubmit={this.sendMessage}>
                     <TextField
                         variant='outlined' margin='normal' fullWidth
-                        id='message' label='Your Message' name='roomname' autoFocus
+                        id='message' label='Your Message' name='message' autoFocus
                     />
                     <Button type='submit' variant="contained" color="primary">Send</Button>
                 </form>

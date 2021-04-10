@@ -6,18 +6,18 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography'
 import './styles.css'
 class Login extends React.Component {
-
+    loggedIn = (e)=>{
+            this.props.loggedHandler(true);
+            this.props.roomHandler(document.getElementById('roomname').value);
+            this.props.userHandler(document.getElementById('username').value);
+    }
     render() {
         return (
             <Container maxWidth="xs" component='main' className='login-form'>
                 <CssBaseline />
                 <div>
                     <Typography component='h1' variant='h5' align='center'>Chat Rooms</Typography>
-                    <form onSubmit={()=>{
-                        this.props.loggedHandler(true);
-                        this.props.roomHandler(document.getElementById('roomname').value);
-                        this.props.userHandler(document.getElementById('username').value);
-                        }}>
+                    <form onSubmit={this.loggedIn}>
                         <TextField 
                         variant='outlined' margin='normal' required fullWidth 
                         id='roomname' label='Room Name' name='roomname' autoFocus
